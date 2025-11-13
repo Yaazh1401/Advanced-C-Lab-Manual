@@ -12,10 +12,37 @@ Algorithm:
 5.	Call the max_of_four function with the input integers and store the result in the greater variable
  
 Program:
-//type your code here
+```
+#include <stdio.h>
+int max_of_four(int a, int b, int c, int d)
+{
+    int max=a;
+    if(b>max)
+    {
+        max=b;
+    }
+    if(c>max)
+    {
+        max=c;
+    }
+    if(d>max)
+    {
+        max=d;
+    }
+    return max;
+}
+int main()
+{
+    int a,b,c,d;
+    scanf("%d%d%d%d",&a,&b,&c,&d);
+    int ans=max_of_four(a,b,c,d);
+    printf("%d",ans);
+}
+```
 
 Output:
-//paste your output here
+<img width="1172" height="434" alt="image" src="https://github.com/user-attachments/assets/38eb98b2-15cc-451b-9fc0-b39cddcff132" />
+
 
 Result:
 Thus, the program  that create a function to find the greatest number is verified successfully.
@@ -36,10 +63,42 @@ Algorithm:
 7.	Call the calculate_the_max function with input values.
  
 Program:
-//type your code here
+```
+#include <stdio.h>
+int main()
+{
+    int n,k;
+    scanf("%d %d",&n,&k);
+    int max_and=0;
+    int max_or=0;
+    int max_xor=0;
+    for(int a=1;a<=n;a++)
+    {
+        for(int b=a+1;b<=n;b++)
+        {
+            int andv =a&b;
+            int orv=a |b;
+            int xorv =a^b;
+            if(andv<k && andv>max_and)
+            {
+                max_and=andv;
+            }
+            if(orv<k && orv>max_or)
+            {
+                max_or=orv;
+            }
+            if(xorv<k && xorv>max_xor)
+            {
+                max_xor=xorv;
+            }
+        }
+    }
+    printf("%d\n%d\n%d\n",max_and,max_or,max_xor);
+}
+```
 
 Output:
-//paste your output here
+<img width="1145" height="471" alt="image" src="https://github.com/user-attachments/assets/979a7ca5-0602-4e0a-b91b-ca94a9896ef2" />
 
 Result:
 Thus, the program to print the maximum values for the AND, OR and XOR comparisons
@@ -59,10 +118,41 @@ Algorithm:
 5.	Use a for loop to iterate over the queries.
  
 Program:
-//type your code here
+```
+#include <stdio.h>
+#include<stdlib.h>
+int *shelves[1000];
+int bkcount[1000]={0};
+int main()
+{
+    int n,q;
+    scanf("%d%d",&n,&q);
+    while(q--)
+    {
+        int type,x,y;
+        scanf("%d",&type);
+        if(type==1)
+        {
+            scanf("%d%d",&x,&y);
+            shelves[x]=realloc(shelves[x],(bkcount[x]+1)*(sizeof(int)));
+            shelves[x][bkcount[x]++]=y;
+        }
+        else if(type==2)
+        {
+            scanf("%d%d",&x,&y);
+            printf("%d\n",shelves[x][y]);
+        }
+        else if(type==3)
+        {
+            scanf("%d",&x);
+            printf("%d",bkcount[x]);
+        }
+    }
+}
+```
 
 Output:
-//paste your output here
+<img width="1152" height="400" alt="image" src="https://github.com/user-attachments/assets/bfe5a319-8a6b-4741-a1da-f8ad80c5b7a1" />
 
 
 Result:
@@ -86,10 +176,25 @@ Algorithm:
 
 
 Program:
-//type your code here
+```
+#include<stdio.h>
+int main()
+{
+    int n,sum=0;
+    scanf("%d",&n);
+    int arr[n];
+    for(int i=0;i<n;i++){
+        scanf("%d",&arr[i]);
+    }
+    for(int i=0;i<n;i++){
+        sum+=arr[i];
+    }
+    printf("%d",sum);
+}
+```
 
 Output:
-//paste your output here
+<img width="1163" height="372" alt="image" src="https://github.com/user-attachments/assets/9dbca3ad-b9e5-4653-97bf-b02855feb661" />
 
  
 
@@ -120,11 +225,30 @@ o	If a character is not a space, it may belong to a word. If it's the first non-
 
 
 Program:
-//type your code here
+```
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+int main()
+{
+    char str[1000];
+    int i,words=0;
+    fgets(str,sizeof(str),stdin);
+    str[strcspn(str,"\n")]='\0';
+    for(i=0;str[i]!='\0';i++)
+    {
+        if((i==0 && !isspace(str[i]))||(isspace(str[i-1])&& !isspace(str[i])))
+        {
+            words++;
+        }
+    }
+    printf("Total number of words in the string is :%d\n",words);
+    return 0;
+}
+```
 
 Output:
-//paste your output here
-
+<img width="1164" height="287" alt="image" src="https://github.com/user-attachments/assets/b72123f9-8845-40dd-a285-a6d443e52498" />
 
 
 Result:
